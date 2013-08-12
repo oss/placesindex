@@ -9,13 +9,15 @@ var data = JSON.parse(fs.readFileSync('index.json', 'utf8'));
 
 keypress(process.stdin);
 
-var lunr = require('lunr');
-var index = lunr.Index.load(data.lunr);
+//var lunr = require('./lunr');
+//var index = lunr.Index.load(data.lunr);
+
+var completer = require('./completer');
 
 function prettyMatches (matches) {
   // make them look nice
   return _.map(matches, function (item) {
-    return item.ref;
+    return item.title;
   });
 }
 
@@ -45,7 +47,7 @@ process.stdin.on('keypress', function (chunk, key) {
   charm.erase('down');
 
   if (search.length > 3) {
-    var res = prettyMatches(index.search(search));
+    var res = prettyMatches(completer.complete(data, search));
 
     _.each(res, function (item, index) {
       charm.position(0, index + 2).write(item);

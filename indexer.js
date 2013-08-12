@@ -26,13 +26,17 @@ function index (data) {
     this.ref('id');
   });
 
+  var identifier;
   var points = [];
   var all = {};
   data.forEach(function (building) {
+    identifier = building.title + "_" + building.building_number + "_" +
+      building.building_id;
+
     var doc = {
       title: building.title,
       num: building.building_number,
-      id: building.building_id
+      id: identifier
     };
     idx.add(doc);
 
@@ -42,12 +46,12 @@ function index (data) {
         y: toRad(Number(building.location.latitude)),
         title: building.title,
         num: building.building_number,
-        id: building.building_id
+        id: identifier
       };
       points.push(point);
     }
 
-    all[building.building_id] = building;
+    all[identifier] = building;
   });
 
   var tree = new kdTree(points, haversine, ['x', 'y']);

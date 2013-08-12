@@ -1,5 +1,5 @@
 var lunr = require('./lunr');
-var KDTree = require('./kdtree');
+var KDTree = require('./kdtree').kdTree;
 
 function toRad (x) { return x * Math.PI / 180; }
 
@@ -24,7 +24,7 @@ var index, tree;
 // Runs autocompletion on the given index. Returns the documents matching the
 // query.
 
-function complete (database, all, query) {
+function complete (database, query) {
   if (!index) index = lunr.Index.load(database.lunr);
   var res = index.search(query);
   return res.map(function (item) {
@@ -43,3 +43,6 @@ function nearby (database, lat, lon, numResults) {
     return database.all[item[0].id];
   });
 }
+
+exports.complete = complete;
+exports.nearby = nearby;
