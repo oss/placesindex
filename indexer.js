@@ -19,7 +19,8 @@ function haversine (s, t) {
 }
 
 // ## index
-// Indexes the building data in `data` and returns a serialized lunr store.
+// Indexes the building data in `data` and returns an object with list of all
+// buildings, serialized lunr store, and serialized kdtree
 function index (data) {
   var idx = lunr(function () {
     this.field('title');
