@@ -1,5 +1,5 @@
 var lunr = require('./lunr');
-var kdtree = require('./kdTree');
+var kdtree = require('./kdtree');
 
 function toRad (x) { return x * Math.PI / 180; }
 
@@ -23,10 +23,11 @@ function haversine (s, t) {
 function index (data) {
   var idx = lunr(function () {
     this.field('title');
-    this.ref('title');
+    this.ref('id');
   });
 
   var points = [];
+  var all = {};
   data.forEach(function (building) {
     var doc = {
       title: building.title,
@@ -45,11 +46,13 @@ function index (data) {
       };
       points.push(point);
     }
+
+    all[building.building_id] = building;
   });
 
   var tree = new kdTree(points, haversine, ['x', 'y']);
 
-  return {lunr: idx.toJSON(), kdtree: tree.toJSON()};
+  return {lunr: idx.toJSON(), kdtree: tree.toJSON(), all: all};
 }
 
 module.exports = index;
