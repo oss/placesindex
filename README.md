@@ -3,6 +3,25 @@
 Takes a list of places and indexes it. Then, `completer.js` can be used to 
 perform autocompletion & nearby queries using this index.
 
+## Testing
+
+The API for getting all data about buildings requires a key. I've included a
+copy of the database in the github repo for easy testing (`all`). You can
+test the indexing by running `test.js`
+
+```
+$ node test
+```
+
+which will do some simple tests, including a nearby query with `kdtree`. You
+can also then run manual_test
+
+```
+$ node manual_test
+```
+
+for an interactive autocompletion test.
+
 ## Client-side Usage
 
 To get place completion & nearby queries, grab the database from the 
