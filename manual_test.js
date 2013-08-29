@@ -46,7 +46,7 @@ process.stdin.on('keypress', function (chunk, key) {
   }
   charm.erase('down');
 
-  if (search.length > 3) {
+  if (search.length >= 3) {
     var res = prettyMatches(completer.complete(data, search));
 
     _.each(res, function (item, index) {
