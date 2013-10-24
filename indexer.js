@@ -32,8 +32,8 @@ function index (data) {
   var points = [];
   var all = {};
   data.forEach(function (building) {
-    identifier = building.title + "_" + building.building_number + "_" +
-      building.building_id;
+    // Use building number + id as unique identifier
+    identifier = building.building_number + "_" + building.building_id;
 
     var doc = {
       title: building.title,
@@ -53,6 +53,8 @@ function index (data) {
       };
       points.push(point);
     }
+
+    building.id = identifier;
 
     all[identifier] = building;
   });
