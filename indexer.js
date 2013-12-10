@@ -33,7 +33,7 @@ function index (data) {
   var all = {};
   data.forEach(function (building) {
     // Use building number + id as unique identifier
-    identifier = building.building_number + "_" + building.building_id;
+    identifier = building.building_number + "_" + building.building_id + building.title;
 
     var doc = {
       title: building.title,
