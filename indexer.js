@@ -24,8 +24,9 @@ function haversine (s, t) {
 function index (data) {
   var idx = lunr(function () {
     this.field('title');
-    this.field('descr');
+    //this.field('descr');
     this.ref('id');
+    this.field('code');
   });
 
   var identifier;
@@ -39,6 +40,7 @@ function index (data) {
       title: building.title,
       num: building.building_number,
       descr: building.description,
+      code: building.building_code,
       id: identifier
     };
     idx.add(doc);
