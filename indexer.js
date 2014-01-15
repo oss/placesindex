@@ -27,6 +27,7 @@ function index (data) {
     //this.field('descr');
     this.ref('id');
     this.field('code');
+    this.field('depts');
   });
 
   var identifier;
@@ -41,6 +42,7 @@ function index (data) {
       num: building.building_number,
       descr: building.description,
       code: building.building_code,
+      depts: building.offices? building.offices.join(', ') : '',
       id: identifier
     };
     idx.add(doc);
