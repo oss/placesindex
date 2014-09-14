@@ -38,7 +38,7 @@ function complete (database, query) {
 function nearby (database, lat, lon, numResults) {
   numResults = numResults || 5;
   if (!tree) tree = new KDTree(database.kdtree, haversine, ['x', 'y']);
-  var res = tree.nearest({x: toRad(Number(lon)), y: toRad(Number(lat))}, 5);
+  var res = tree.nearest({x: toRad(Number(lon)), y: toRad(Number(lat))}, numResults);
   return res.map(function (item) {
     return database.all[item[0].id];
   });
