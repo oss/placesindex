@@ -1,0 +1,18 @@
+{
+  "name": "placesindex",
+  "version": "0.0.0",
+  "description": "indexes the places at rutgers",
+  "main": "completer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "difflet": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:mobile/placesindex"
+  },
+  "author": "Russ Frank <russ.frank@rutgers.edu>",
+  "license": "BSD"
+}
