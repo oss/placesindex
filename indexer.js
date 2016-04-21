@@ -1,12 +1,12 @@
-var lunr = require('lunr');
-var _ = require('lodash');
+const lunr = require('lunr');
+const _ = require('lodash');
 
 // ## index
 // Indexes the building data in `data` and returns an object with list of all
 // buildings, serialized lunr store, and serialized kdtree
 function index (data) {
-    var buildings = _.reduce(data, function (acc, building) {
-        var idx = acc.idx,
+    const buildings = _.reduce(data, (acc, building) => {
+        const idx = acc.idx,
             all = acc.all,
             // Use building number + id as unique identifier
             identifier = building.building_number + "_" + building.building_id + building.title;
